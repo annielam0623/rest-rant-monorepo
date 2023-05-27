@@ -5,18 +5,8 @@ const bcrypt = require('bcrypt')
 const { User } = db
 
 router.get('/profile', async (req, res) => {
-    try {
-        let user = await User.findOne({
-            where: {
-                userId: req.session.userId
-            }
-        })
-        res.json(user)
-    } catch {
-        res.json(null)
-    }
+   res.json(req.currentUser)
 })
-
 
 router.get('/logout', async (req, res) => {
     req.session = null
