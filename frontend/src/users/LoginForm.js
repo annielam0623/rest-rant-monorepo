@@ -35,11 +35,6 @@ function LoginForm() {
         setErrorMessage(data.message)
     }
 }
-  
-
-}
-}
-
     return (
         <main>
             <h1>Login</h1>

@@ -6,7 +6,14 @@ function Navigation() {
 
     const history = useHistory()
 
-    const { currentUser } = useContext(CurrentUser)
+    const { currentUser, setCurrentUser } = useContext(CurrentUser)
+
+    async function handleLogout() {
+        await fetch('http://localhost:5000/authentication/logout', {
+            credentials: 'include'
+        })
+        setCurrentUser(null)
+    }
 
     let loginActions = (
         <>

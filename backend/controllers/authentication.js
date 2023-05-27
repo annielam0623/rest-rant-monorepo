@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 
 const { User } = db
 
-___
 router.get('/profile', async (req, res) => {
     try {
         let user = await User.findOne({
@@ -26,7 +25,6 @@ router.get('/logout', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    console.log('IN HERE')
 
     let user = await User.findOne({
       where: { email: req.body.email }
@@ -42,7 +40,6 @@ router.post('/', async (req, res) => {
   }
 })
 
-__
 router.post('/super-important-route', async (req, res) => {
     if(req.session.userId){
         console.log('Do the really super important thing')
