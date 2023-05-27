@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/profile', async (req, res) => {
+    res.json(req.currentUser)
     try {
         const [authenticationMethod, token] = req.headers.authorization.split('')
 
