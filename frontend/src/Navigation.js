@@ -9,7 +9,7 @@ function Navigation() {
     const { currentUser, setCurrentUser } = useContext(CurrentUser)
 
     async function handleLogout() {
-        await fetch('http://localhost:5000/authentication/logout', {
+        await fetch('http://localhost:3000/authentication/logout', {
             credentials: 'include'
         })
         setCurrentUser(null)
@@ -38,6 +38,18 @@ function Navigation() {
         )
     }
 
+    let addPlaceButton = null
+
+    if (currentUser?.role === 'admin') {
+        addPlaceButton = (
+            <li>
+                <a href="#" onClick={ () => history.push("/places/new")}>
+                    Add Place
+                </a>
+            </li>
+        )
+    }
+
     return (
         <nav>
             <ul>
@@ -56,6 +68,7 @@ function Navigation() {
                         Add Place
                     </a>
                 </li>
+                {addPlaceButton}
                 {loginActions}
             </ul>
         </nav>
