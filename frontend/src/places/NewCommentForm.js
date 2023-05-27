@@ -14,13 +14,13 @@ function NewCommentForm({ place, onSubmit }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/users`)
+            const response = await fetch(`http://localhost:3000/users`)
             const users = await response.json()
             setComment({ ...comment, authorId: users[0]?.userId})
             setAuthors(users)
         }
         fetchData()
-    }, [])
+    }, [comment])
 
     let authorOptions = authors.map(author => {
         return <option key={author.userId} value={author.userId}>{author.firstName} {author.lastName}</option>
